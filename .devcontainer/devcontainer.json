@@ -1,13 +1,35 @@
 {
-  "name": "Development Container for CCF C++ Apps",
-  "dockerFile": "Dockerfile",
-  "extensions": [
-    "ms-vscode.cpptools",
-    "vsls-contrib.codetour"
-  ],
-  "features": {
-    "ghcr.io/devcontainers/features/docker-from-docker:1": {
-      "version": "20.10.8"
+  "name": "CCF App Template",
+  "image": "mcr.microsoft.com/ccf/app/dev:3.0.1-virtual",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vsls-contrib.codetour",
+        "esbenp.prettier-vscode",
+        "timonwong.shellcheck",
+        "github.vscode-pull-request-github"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll": true
+        }
+      }
     }
+  },
+  "postStartCommand": ".devcontainer/devContainer_OnStart.sh",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "version": "20.10.21"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "16.17.0",
+      "nodeGypDependencies": true
+    },
+    "ghcr.io/devcontainers/features/powershell:1": {
+      "modules": "Az.Resources, Microsoft.Graph.Authentication, Microsoft.Graph.Applications"
+    },
+    "ghcr.io/rchaganti/vsc-devcontainer-features/azurebicep:1": {}
   }
 }
