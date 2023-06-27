@@ -1,3 +1,12 @@
+**/build/**
+*.deb
+**/.venv_ccf_sandbox
+**/.venv_ccf_verify_receipt
+**/workspace/
+**/node_modules
 package-lock.json
-node_modules/
-dist/
+*.pem
+*.pfx
+**/dist
+**/coverage
+aad.env
